@@ -8,5 +8,11 @@ RSpec.describe "StaticPages", :type => :request do
  	#		page.should have_content('Home Page')  #by capybara
  	#	end
  	#end
+ 	describe 'clicking link to contact page' do
+ 		before { click_link 'Contact'}
+ 		it 'should open contact page' do
+ 			current_path.should == contact_path
+ 		end
+ 	end
   end
 end
