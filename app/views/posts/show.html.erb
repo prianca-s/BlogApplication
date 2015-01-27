@@ -1,0 +1,17 @@
+ <h1>This will be a individual post page</h1>
+   	<p><%= @post.id %></p>
+
+ 
+
+
+<h4>
+        <%= @post.title %>
+        <% if @post.user == current_user %>
+            <small><%= link_to 'edit', edit_post_path(@post) %></small>
+        <% end %>
+</h4>
+<p><small><strong>By: </strong><%= @post.user.email %></small></p>
+
+ 
+
+<p><%= @post.content %></p>
