@@ -3,9 +3,19 @@ Rails.application.routes.draw do
   resources :posts
 
   get 'static_pages/home'
-
   get 'static_pages/contact'
+  #get 'posts/new'
+  #get 'posts/edit'
   root 'static_pages#home'
+  get 'posts/comments/create'
+  get 'posts/comments/show'
+  get 'posts/comments/update'
+  get 'posts/comments/edit'
+  get 'posts/comments/destroy'
+  resources :posts do
+    resources :comments
+  end
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

@@ -1,17 +1,59 @@
- <h1>This will be a individual post page</h1>
-   	<p><%= @post.id %></p>
-
- 
-
-
-<h4>
+<!-- 
+<p><%= @post.id %></p>
+<p>
         <%= @post.title %>
-        <% if @post.user == current_user %>
-            <small><%= link_to 'edit', edit_post_path(@post) %></small>
-        <% end %>
-</h4>
-<p><small><strong>By: </strong><%= @post.user.email %></small></p>
+       
+            <%= link_to 'edit', edit_post_path(@post) %>
+            <%= link_to 'delete post', @post, method: :delete, data: {confirm: "Are you sure you want to delete this permanently?"} %>
+     
+</p>
+<p><%= @post.content %></p> -->
 
- 
 
-<p><%= @post.content %></p>
+<%- model_class = Post -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.titleize %></h1>
+</div>
+
+<dl class="dl-horizontal">
+  <dt><strong><%= model_class.human_attribute_name(:user_id) %>:</strong></dt>
+  <dd><%= @post.user_id %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:title) %>:</strong></dt>
+  <dd><%= @post.title %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:content) %>:</strong></dt>
+  <dd><%= @post.content %></dd>
+</dl>
+
+<%= link_to t('.back', :default => t("helpers.links.back")),
+              posts_path, :class => 'btn btn-default'  %>
+<%= link_to t('.edit', :default => t("helpers.links.edit")),
+              edit_post_path(@post), :class => 'btn btn-default' %>
+<%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+              post_path(@post),
+              :method => 'delete',
+              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+              :class => 'btn btn-danger' %>
+
+
+
+<!-- /posts/:post_id/comments/ -->
+<%= link_to 'Comments', post_comments_path(@post), :class => 'btn btn-default'  %> 
+
+
+
+<!-- 
+
+<h3>Comments</h3>
+
+<% @post.comments.each do |c| %>
+  <dd><%= c.text %></dd>
+  <p><%= time_ago_in_words c.created_at %> ago </p>
+  <%= link_to 'edit', edit_post_comment_path(c.post, c) %> 
+
+  <%= link_to 'delete comment', [@post, c] , method: :delete, data: {confirm: "Are you sure you want to delete this permanently?"} %> 
+<% end %>
+
+<%= form_for [@post, @post.comments.build] do |f| %>
+  <p><%= f.text_area :text, :size => '40x10', class: 'form-control', rows: 6%></p>
+  <p><%= f.submit "Post comment", :class => 'btn btn-default'  %></p>
+<% end %> -->

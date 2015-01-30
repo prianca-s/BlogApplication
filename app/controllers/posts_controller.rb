@@ -15,9 +15,10 @@ class PostsController < ApplicationController
     end
 
     def create
-    	@user = current_user
+    	
         @post = Post.new(allowed_params)
-
+        @post.user = current_user
+        #user = current_user
         if @post.save
             flash[:success] = "Created new post"
             redirect_to @post
@@ -28,7 +29,7 @@ class PostsController < ApplicationController
 
     def edit
    		@post = Post.find(params[:id])
-   		redirect_to posts_path unless @post.user == current_user
+   		#redirect_to posts_path unless @post.user == current_user
 	end
 
 	def update
@@ -36,7 +37,7 @@ class PostsController < ApplicationController
         if @post.user == current_user
             if @post.update_attributes(allowed_params)
                 flash[:success] = "Updated post"
-                redirect_to @post
+                redirect_to posts_path
             else
                 render 'edit'
             end
@@ -52,8 +53,8 @@ class PostsController < ApplicationController
             @post.destroy
             redirect_to posts_path
         else
-            redirect_to root_path
-            flash[:danger] = "You can't do this"
+              redirect_to posts_path
+               flash[:danger] = "You can't destroy others post"
         end
     end
 

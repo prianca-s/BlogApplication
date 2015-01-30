@@ -13,6 +13,6 @@ RSpec.describe "StaticPages", :type => :request do
  #		it 'should open contact page' do
  #			current_path.should == contact_path
  #		end
- 	end
+ #	end
   end
 end

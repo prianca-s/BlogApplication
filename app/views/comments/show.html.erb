@@ -1,0 +1,12 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Body:</b>
+  <%= @comment.text %>
+</p>
+
+<!-- /posts/:post_id/comments/:id/edit -->
+<%= link_to 'Edit', edit_post_comment_path(@comment.post, @comment), :class => 'btn btn-default' %> |
+
+<!-- /posts/:post_id/comments/ -->
+<%= link_to 'Back', post_comments_path(@comment.post), :class => 'btn btn-default' %>
