@@ -44,8 +44,6 @@ Rails.application.configure do
     post: 587,
     authentication: "plain",
     enable_starttls_auto: true,
-    user_name: "psprianca25@gmail.com", 
-    password: "progammingit"
   }
 
 end

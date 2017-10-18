@@ -12,7 +12,7 @@ require 'faker'
 FactoryGirl.define do
 	factory :user do
 		email {Faker::Internet.email}
-		#email "pspriancaa25@gmail.com"
+		email "test@gmail.com"
 		password "helloworld@1"
 	end
 end

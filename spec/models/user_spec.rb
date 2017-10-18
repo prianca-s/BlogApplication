@@ -10,7 +10,7 @@ RSpec.describe User, :type => :model do
 	end
 
 	it "is valid with a email" do
-      FactoryGirl.build(:user, email: "pspriancaa25@gmail.com").should be_valid
+      FactoryGirl.build(:user, email: "test@gmail.com").should be_valid
    end
  	
  	 it "is invalid with a duplicate email address" do
